@@ -68,8 +68,9 @@ def convert_gsheet_url_to_csv(url: str) -> str:
         return ""
 
 def load_data():
-    uploaded_file = st.sidebar.file_uploader("Upload dataset (CSV, Excel)", type=["csv", "xlsx"])
-    google_sheet_url = st.sidebar.text_input("Or paste Google Sheet URL (public/shared)")
+    # Unique keys for both file_uploader and text_input
+    uploaded_file = st.sidebar.file_uploader("Upload dataset (CSV, Excel)", type=["csv", "xlsx"], key="dataset_uploader")
+    google_sheet_url = st.sidebar.text_input("Or paste Google Sheet URL (public/shared)", key="gsheet_url")
 
     df = None
     error_msg = ""
@@ -83,7 +84,7 @@ def load_data():
         elif google_sheet_url:
             if "docs.google.com" in google_sheet_url:
                 csv_url = convert_gsheet_url_to_csv(google_sheet_url)
-                import ssl
+                # Ensure SSL context is set to avoid certificate errors
                 ssl._create_default_https_context = ssl._create_unverified_context
                 df = pd.read_csv(csv_url)
             else:
@@ -94,6 +95,7 @@ def load_data():
     if df is not None:
         df = map_columns(df)
     else:
+        # If no file is uploaded or there's an error, use default demo data
         st.sidebar.error(error_msg or "Using default demo data.")
         df = pd.read_csv("data/mock_data.csv")
         df = map_columns(df)
