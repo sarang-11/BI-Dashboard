@@ -1,0 +1,5 @@
+Client,Project,Revenue,Tickets,CSAT,Team,Service,Status,Deadline,Month,Resolution Time (hrs)
+Alpha Inc,Website Revamp,15000,5,92,Team A,Web Dev,On Track,2025-07-15,June,24
+Beta LLC,Cloud Migration,32000,10,87,Team B,Cloud,Delayed,2025-06-30,June,36
+Gamma Corp,App Optimization,22000,7,85,Team A,Mobile,On Track,2025-07-05,June,20
+Delta Ltd,Analytics Setup,12000,3,90,Team C,Data,Critical,2025-06-28,June,40
