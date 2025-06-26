@@ -77,4 +77,3 @@ elif page == "🧠 Smart Insights":
         si.app(df)
     else:
         st.warning("Please upload a valid dataset to view Smart Insights.")
-
